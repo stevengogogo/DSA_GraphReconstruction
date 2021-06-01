@@ -24,6 +24,38 @@ void add_edge(adjlist* adl, int u, int v){
     enque(&adl->ques[u], v);
 }
 
+
+//validation
+edgeList init_edgeList(int size){
+    edgeList el;
+    el.u = init_Arr(size);
+    el.v = init_Arr(size);
+    el.valid = true;
+    return el;
+}
+
+void kill_edgeList(edgeList* el){
+    kill_dymArr(&el->u);
+    kill_dymArr(&el->v);
+}
+
+void print_edgeList(edgeList el){
+    if(el.valid){
+        printf("Yes\n");
+        for (int i=0;i<el.u.len;i++){
+            printf("%d %d", get_item(el.u,i), get_item(el.v,i));
+            if(i!= el.u.len-1)
+                printf("\n");
+        }
+    }
+    else{
+        printf("No");
+    }
+};
+
+
+
+
 int interface(void){
     int N;//Number of nodes
     int numV; // number of adjacent nodes
