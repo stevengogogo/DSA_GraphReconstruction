@@ -3,10 +3,6 @@
 
 #include "utils.h"
 
-typedef struct{
-    list* vs;
-    int numV;
-} adjList;
 
 
 void interface(void);
