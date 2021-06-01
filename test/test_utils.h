@@ -15,11 +15,13 @@ void test_utils(void)
 }
 
 void test_array(void){
-    dymArr arr = init_Arr(0);
+    dymArr arr = init_Arr(1);
 
     for(int i=0;i<MAX_NODES;i++)
         append_dymArr(&arr, i);
 
+    TEST_CHECK(arr.size >= MAX_NODES);
+    TEST_CHECK(arr.len == MAX_NODES);
     for(int i=0;i<MAX_NODES;i++)
         TEST_CHECK(get_item(arr, i) == i);
 

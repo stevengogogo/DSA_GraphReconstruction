@@ -10,11 +10,11 @@ int argmax(int a, int b){
 
 
 dymArr init_Arr(int size){
-    assert(size>=0);
+    assert(size>=1);
     int* is = (int*)malloc(size*sizeof(int));
     dymArr arr = {
         .i = is,
-        .len = -1,
+        .len = 0,
         .size = size
     };
     return arr;
@@ -22,7 +22,7 @@ dymArr init_Arr(int size){
 
 void kill_dymArr(dymArr* arr){
     arr->size=0;
-    arr->len=-1;
+    arr->len=0;
     free(arr->i);
 };
 
@@ -35,8 +35,8 @@ void append_dymArr(dymArr* arr, int val){
       arr->size = new_size;
     }
 
-    ++(arr->len);
     arr->i[arr->len] = val;
+    ++(arr->len);
 }
 
 int get_item(dymArr arr, int i){
