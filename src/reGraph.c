@@ -57,18 +57,35 @@ void print_edgeList(edgeList el){
 edgeList GraphReconstruct(adjlist* adl){
 
     //TODO
-    edgeList el = init_edgeList(3);
+    edgeList el = init_edgeList(adl->n);
+    int adjV = 0;
+    int pairV = 0;
+    
+    for(int u=1;u<=adl->n;u++){
+        adjV = deque(&adl->ques[u]);
+        while(adjV!=EMTY_QUE_SIG){
+            pairV = deque(&adl->ques[adjV]);
+            if (pairV != u)
+                el.valid = false;
+            else{
+                append_dymArr(&el.u,u);
+                append_dymArr(&el.v,pairV);
+            }
+            adjV = deque(&adl->ques[u]);
+        }
 
-    el.valid =false;
+        if(!el.valid)
+            break;
+    }
+
+   
     return el;
-
-    //TODO
 }
 
 int interface(void){
     int N;//Number of nodes
     int numV; // number of adjacent nodes
-    int V; // index of node
+    int Vi; // index of node
     
     //Set Problem
     scanf("%d", &N);
@@ -78,7 +95,8 @@ int interface(void){
     for(int u=1;u<=N;u++){
         scanf("%d", &numV);
         for(int v=1;v<=numV;v++){
-            add_edge(&adl, u, v);
+            scanf("%d", &Vi);
+            add_edge(&adl, u, Vi);
         }
     }
 
