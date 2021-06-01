@@ -36,7 +36,7 @@ RUNTEST: MERGETEST
 	gcc -g3 -o $(testbuild)/test.out test_TEMP/*.c
 	./$(testbuild)/test.out 
 
-TEST: MERGETEST RUNTEST cleantest
+TEST: MERGETEST RUNTEST cleantest TESTstdin
 
 
 RUN:
@@ -59,9 +59,14 @@ MERGE_MAIN:
 	$(CCm) $(src_folder)/main.c  build/main.c
 	$(CC) -o build/main_test_build.out build/main.c
 
-LEAK: TEST
+LEAK: TEST 
 	valgrind --leak-check=full --show-leak-kinds=all --verbose ./test/build/test.out
 
 
 TESTD: BUILD
 	sudo bash ./test/test.sh
+
+TESTstdin: BUILD
+	echo "Test Input"
+	build/main.out < test/data/0.in
+	echo "Done"

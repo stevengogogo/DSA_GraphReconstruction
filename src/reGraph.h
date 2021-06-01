@@ -11,7 +11,10 @@
 #ifndef REGRAPH_H
 #define REGRAPH_H
 #define INIT_ADJ_LEN 1000
+#include <stdlib.h>
+#include <stdio.h>
 #include "utils.h"
+
 
 /**
  * @brief Adjacency list
@@ -24,6 +27,12 @@ typedef struct {
 } adjlist;
 
 // Init and kill
+/**
+ * @brief Create adjacency list with n vertexes
+ * 
+ * @param n number of vertexes
+ * @return adjlist 
+ */
 adjlist init_adjlist(int n);
 void kill_adjlist(adjlist*);
 
@@ -36,7 +45,7 @@ void kill_adjlist(adjlist*);
  */
 void add_edge(adjlist*, int u, int v);
 
-void interface(void);
+int interface(void);
 
 
 #endif 
