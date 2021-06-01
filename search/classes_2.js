@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['que_11',['que',['../structque.html',1,'']]]
+  ['edgelist_12',['edgeList',['../structedgeList.html',1,'']]]
 ];

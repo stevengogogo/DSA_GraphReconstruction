@@ -1,7 +1,8 @@
 <map id="src/reGraph.h" name="src/reGraph.h">
-<area shape="rect" id="node1" title=" " alt="" coords="24,5,124,32"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,155,68,181"/>
-<area shape="rect" id="node3" title=" " alt="" coords="44,80,104,107"/>
-<area shape="rect" id="node4" href="$utils_8h.html" title="General Utilities for C language." alt="" coords="129,80,185,107"/>
-<area shape="rect" id="node5" title=" " alt="" coords="123,155,191,181"/>
+<area shape="rect" id="node1" title=" " alt="" coords="47,5,147,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="33,155,95,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="22,80,82,107"/>
+<area shape="rect" id="node4" title=" " alt="" coords="107,80,181,107"/>
+<area shape="rect" id="node5" href="$utils_8h.html" title="General Utilities for C language." alt="" coords="205,80,261,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="199,155,267,181"/>
 </map>
