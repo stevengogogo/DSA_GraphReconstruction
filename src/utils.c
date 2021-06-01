@@ -67,7 +67,9 @@ void enque(que* q, int val){
 }
 
 int deque(que* q){
-    assert(q->head <= q->tail);
+    if(q->head > q->tail){
+        return EMTY_QUE_SIG;
+    }
     int val = get_item(q->arr, q->head);
     ++(q->head);
     return val;

@@ -13,7 +13,7 @@
 
 #include <stdlib.h>
 #include <assert.h>
-
+#define EMTY_QUE_SIG -121242
 /**
  * @brief Argmax function with intergers
  * 
