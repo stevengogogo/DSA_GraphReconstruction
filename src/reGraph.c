@@ -3,10 +3,10 @@
 adjlist init_adjlist(int n){
     adjlist adl;
     adl.n = n;
-    adl.lists = (dymArr*)malloc((n+1)*sizeof(dymArr));
+    adl.ques = (que*)malloc((n+1)*sizeof(que));
 
     for (int i=1;i<=n;i++){
-        adl.lists[i] = init_Arr(INIT_ADJ_LEN);
+        adl.ques[i] = init_que(INIT_ADJ_LEN);
     }
 
     return adl;
@@ -14,12 +14,12 @@ adjlist init_adjlist(int n){
 
 void kill_adjlist(adjlist* adl){
     for(int i=0;i<=adl->n;i++){
-        kill_dymArr(&adl->lists[i]);
+        kill_que(&adl->ques[i]);
     }
-    free(adl->lists);
+    free(adl->ques);
     adl->n = 0;
 }
 
 void add_edge(adjlist* adl, int u, int v){
-    append_dymArr(&adl->lists[u], v);
+    enque(&adl->ques[u], v);
 }
