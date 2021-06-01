@@ -1,0 +1,4 @@
+<map id="adjlist" name="adjlist">
+<area shape="rect" id="node1" title="Adjacency list." alt="" coords="9,95,65,121"/>
+<area shape="rect" id="node2" href="$structdymArr.html" title=" " alt="" coords="5,5,68,32"/>
+</map>
