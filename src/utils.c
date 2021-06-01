@@ -42,3 +42,33 @@ void append_dymArr(dymArr* arr, int val){
 int get_item(dymArr arr, int i){
     return arr.i[i];
 }
+
+
+// Queue
+
+que init_que(int size){
+    que q;
+    q.arr = init_Arr(size);
+    q.head = -1;
+    q.tail = -1;
+    return q;
+}
+
+void kill_que(que* q){
+    kill_dymArr(&q->arr);
+}
+
+void enque(que* q, int val){
+    append_dymArr(&q->arr, val);
+    if(q->head == -1){ //first element
+        ++(q->head);
+    }
+    q->tail = q->arr.len - 1;
+}
+
+int deque(que* q){
+    assert(q->head <= q->tail);
+    int val = get_item(q->arr, q->head);
+    ++(q->head);
+    return val;
+}

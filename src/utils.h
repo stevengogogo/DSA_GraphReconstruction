@@ -40,6 +40,17 @@ void append_dymArr(dymArr*, int val);
 int get_item(dymArr, int i);
 
 
+typedef struct{
+    dymArr arr;
+    int head;
+    int tail;
+} que;
+
+que init_que(int size);
+void kill_que(que*);
+
+void enque(que*, int val);
+int deque(que*);
 
 
 
