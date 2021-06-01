@@ -13,8 +13,8 @@
 #define INIT_ADJ_LEN 1000
 #include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
 #include "utils.h"
-
 
 /**
  * @brief Adjacency list
@@ -44,6 +44,19 @@ void kill_adjlist(adjlist*);
  * @param v ending vertex
  */
 void add_edge(adjlist*, int u, int v);
+
+//Validation
+typedef struct {
+    dymArr u;
+    dymArr v;
+    bool valid;
+} edgeList;
+
+edgeList init_edgeList(int size);
+void kill_edgeList(edgeList*);
+void print_edgeList(edgeList);
+
+edgeList GraphReconstruct(adjlist*);
 
 int interface(void);
 
