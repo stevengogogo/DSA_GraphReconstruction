@@ -54,13 +54,23 @@ void print_edgeList(edgeList el){
 };
 
 
+edgeList GraphReconstruct(adjlist* adl){
 
+    //TODO
+    edgeList el = init_edgeList(3);
+
+    el.valid =false;
+    return el;
+
+    //TODO
+}
 
 int interface(void){
     int N;//Number of nodes
     int numV; // number of adjacent nodes
     int V; // index of node
     
+    //Set Problem
     scanf("%d", &N);
 
     adjlist adl = init_adjlist(N);
@@ -72,7 +82,14 @@ int interface(void){
         }
     }
 
+    //Solve
+    edgeList el = GraphReconstruct(&adl);
 
+    //Print
+    print_edgeList(el);
+
+    //GC
+    kill_edgeList(&el);
     kill_adjlist(&adl);
 
     return 0;
