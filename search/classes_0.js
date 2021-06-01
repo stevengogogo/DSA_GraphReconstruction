@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['adjlist_5',['adjList',['../structadjList.html',1,'']]]
+  ['dymarr_4',['dymArr',['../structdymArr.html',1,'']]]
 ];
