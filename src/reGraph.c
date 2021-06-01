@@ -23,3 +23,25 @@ void kill_adjlist(adjlist* adl){
 void add_edge(adjlist* adl, int u, int v){
     enque(&adl->ques[u], v);
 }
+
+int interface(void){
+    int N;//Number of nodes
+    int numV; // number of adjacent nodes
+    int V; // index of node
+    
+    scanf("%d", &N);
+
+    adjlist adl = init_adjlist(N);
+
+    for(int u=1;u<=N;u++){
+        scanf("%d", &numV);
+        for(int v=1;v<=numV;v++){
+            add_edge(&adl, u, v);
+        }
+    }
+
+
+    kill_adjlist(&adl);
+
+    return 0;
+}   
