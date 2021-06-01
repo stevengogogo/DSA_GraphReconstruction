@@ -4,6 +4,8 @@
 #include "acutest.h"
 #include "utils.h"
 
+#define MAX_NODES 100000
+
 void test_utils(void)
 {
     int a, b;
@@ -12,5 +14,18 @@ void test_utils(void)
     TEST_CHECK(argmax(a,b)  == 1 );
 }
 
+void test_array(void){
+    dymArr arr = init_Arr(1);
+
+    for(int i=0;i<MAX_NODES;i++)
+        append_dymArr(&arr, i);
+
+    TEST_CHECK(arr.size >= MAX_NODES);
+    TEST_CHECK(arr.len == MAX_NODES);
+    for(int i=0;i<MAX_NODES;i++)
+        TEST_CHECK(get_item(arr, i) == i);
+
+    kill_dymArr(&arr);
+}
 
 #endif
