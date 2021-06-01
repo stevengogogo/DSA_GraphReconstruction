@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['regraph_2eh_6',['reGraph.h',['../reGraph_8h.html',1,'']]]
+  ['que_6',['que',['../structque.html',1,'']]]
 ];

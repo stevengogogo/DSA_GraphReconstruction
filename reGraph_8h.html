@@ -73,16 +73,19 @@ $(function() {
 <div class="title">reGraph.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<div class="textblock"><code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for reGraph.h:</div>
 <div class="dyncontent">
 <div class="center"><img src="reGraph_8h__incl.png" border="0" usemap="#asrc_2reGraph_8h" alt=""/></div>
 <map name="asrc_2reGraph_8h" id="asrc_2reGraph_8h">
-<area shape="rect" title=" " alt="" coords="31,5,131,32"/>
-<area shape="rect" href="utils_8h.html" title="General Utilities for C language." alt="" coords="53,80,109,107"/>
+<area shape="rect" title=" " alt="" coords="24,5,124,32"/>
 <area shape="rect" title=" " alt="" coords="5,155,68,181"/>
-<area shape="rect" title=" " alt="" coords="92,155,160,181"/>
+<area shape="rect" title=" " alt="" coords="44,80,104,107"/>
+<area shape="rect" href="utils_8h.html" title="General Utilities for C language." alt="" coords="129,80,185,107"/>
+<area shape="rect" title=" " alt="" coords="123,155,191,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -111,8 +114,8 @@ Macros</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a4dcb7b8db53dad6de835618918a3d9c9"><td class="memItemLeft" align="right" valign="top"><a id="a4dcb7b8db53dad6de835618918a3d9c9"></a>
-<a class="el" href="structadjlist.html">adjlist</a>&#160;</td><td class="memItemRight" valign="bottom"><b>init_adjlist</b> (int n)</td></tr>
+<tr class="memitem:a4dcb7b8db53dad6de835618918a3d9c9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structadjlist.html">adjlist</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="reGraph_8h.html#a4dcb7b8db53dad6de835618918a3d9c9">init_adjlist</a> (int n)</td></tr>
+<tr class="memdesc:a4dcb7b8db53dad6de835618918a3d9c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Create adjacency list with n vertexes.  <a href="reGraph_8h.html#a4dcb7b8db53dad6de835618918a3d9c9">More...</a><br /></td></tr>
 <tr class="separator:a4dcb7b8db53dad6de835618918a3d9c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8bb4fcb8d8eccf0c5e1a93adea956282"><td class="memItemLeft" align="right" valign="top"><a id="a8bb4fcb8d8eccf0c5e1a93adea956282"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>kill_adjlist</b> (<a class="el" href="structadjlist.html">adjlist</a> *)</td></tr>
@@ -120,9 +123,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>kill_adjlist</b> (<a 
 <tr class="memitem:a6fc092bd8a5734c02871a57d18d5a0d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="reGraph_8h.html#a6fc092bd8a5734c02871a57d18d5a0d0">add_edge</a> (<a class="el" href="structadjlist.html">adjlist</a> *, int u, int v)</td></tr>
 <tr class="memdesc:a6fc092bd8a5734c02871a57d18d5a0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add edge to link v to u.  <a href="reGraph_8h.html#a6fc092bd8a5734c02871a57d18d5a0d0">More...</a><br /></td></tr>
 <tr class="separator:a6fc092bd8a5734c02871a57d18d5a0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f4cbf5cfe0219499d9018b18e2acac5"><td class="memItemLeft" align="right" valign="top"><a id="a8f4cbf5cfe0219499d9018b18e2acac5"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> (void)</td></tr>
-<tr class="separator:a8f4cbf5cfe0219499d9018b18e2acac5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a291f23de83e1b78e47b0d87a464bed04"><td class="memItemLeft" align="right" valign="top"><a id="a291f23de83e1b78e47b0d87a464bed04"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> (void)</td></tr>
+<tr class="separator:a291f23de83e1b78e47b0d87a464bed04"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>your name (<a href="#" onclick="location.href='mai'+'lto:'+'you'+'@d'+'oma'+'in'+'.co'+'m'; return false;">you@d<span style="display: none;">.nosp@m.</span>omai<span style="display: none;">.nosp@m.</span>n.com</a>) </dd></dl>
@@ -170,6 +173,33 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> (void)<
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a4dcb7b8db53dad6de835618918a3d9c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4dcb7b8db53dad6de835618918a3d9c9">&#9670;&nbsp;</a></span>init_adjlist()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structadjlist.html">adjlist</a> init_adjlist </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Create adjacency list with n vertexes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>number of vertexes </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>adjlist </dd></dl>
 
 </div>
 </div>
