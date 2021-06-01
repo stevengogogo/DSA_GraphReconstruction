@@ -19,7 +19,7 @@
  * @param n number of vertexes
  */
 typedef struct {
-    dymArr* lists;
+    que* ques;
     int n; 
 } adjlist;
 
