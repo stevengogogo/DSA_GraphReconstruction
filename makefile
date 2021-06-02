@@ -22,7 +22,7 @@ reset=`tput sgr0`
 BUILD: 
 	mkdir -p  $(build_folder)
 	$(CC) -o $(build_folder)/main.out $(src_folder)/*.c
-	echo "$(green)Built and deploy at $(mag) $(build_folder)/$(outfile)$(reset)";
+	echo "$(green)Built and deploy at $(mag) $(outfile)$(reset)";
 
 MERGETEST:
 	mkdir -p test_TEMP 
