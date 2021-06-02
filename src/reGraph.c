@@ -108,16 +108,16 @@ bool deque_adjList(adjlist* adl, edgeList* el, dymArr* pathc, int vtx){
     }
 
     int nextV = peek_que(&adl->ques[adjV]);
-    
-    if (nextV == EMTY_QUE_SIG){
+
+    if (nextV == EMTY_QUE_SIG){ //partner is absent
         el->valid=false;
         return false;
     }
 
-    if(adjV == nextV){
-        append_edge(el, vtx, adjV);
+    if(vtx == nextV){
+        append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
-        deque(&adl->ques[vtx]);
+        deque(&adl->ques[nextV]);
         clear_Arr(pathc);
     }
     else{
