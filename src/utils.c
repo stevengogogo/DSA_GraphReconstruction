@@ -79,7 +79,7 @@ int deque(que* q){
 }
 
 int peek_que(que* q){
-    if(q->head > q->tail)
+    if(q->head > q->tail || q->arr.len==0)
         return EMTY_QUE_SIG;
     else 
         return q->arr.i[q->head];

@@ -64,6 +64,7 @@ typedef struct {
 edgeList init_edgeList(int size);
 void kill_edgeList(edgeList*);
 void print_edgeList(edgeList);
+void append_edge(edgeList*, int u, int v);
 
 edgeList GraphReconstruct(adjlist*);
 

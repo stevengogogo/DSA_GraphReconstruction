@@ -67,30 +67,76 @@ void print_edgeList(edgeList el){
     }
 };
 
+void append_edge(edgeList* el, int u, int v){
+    append_dymArr(&el->u,u);
+    append_dymArr(&el->v,v);
+}
+
 
 edgeList GraphReconstruct(adjlist* adl){
 
     //TODO
     edgeList el = init_edgeList(adl->n);
+    int cur_u;
     int adjV = 0;
-    int pairV = 0;
+    int nextV = 0;
+    int Va, Vb;
     dymArr pathc = init_Arr(INIT_ADJ_LEN); // record path
     
     for(int u=1;u<=adl->n;u++){
-        adjV = peek_que(&adl->ques[u]);
+        cur_u = u;
+        adjV = peek_que(&adl->ques[cur_u]);
         while(adjV!=EMTY_QUE_SIG){
-            nextV = deque(&adl->ques[adjV]);
-            if (pairV != u)
-                el.valid = false;
-            else{
-                append_dymArr(&el.u,u);
-                append_dymArr(&el.v,pairV);
+            nextV = peek_que(&adl->ques[adjV]);
+
+            //Check mutual link
+            if( nextV == cur_u  ){ //valid edge
+                // deque mutual list
+                Va = deque(&adl->ques[cur_u]);
+                Vb = deque(&adl->ques[adjV]);
+                //record
+                append_edge(&el, Va, Vb);
+
+                //Clear path
+                clear_Arr(&pathc);
             }
-            adjV = deque(&adl->ques[u]);
+            else{//not valid edge
+                append_dymArr(&pathc, cur_u);
+                cur_u = nextV;
+                adjV = peek_que(&adl->ques[cur_u]);
+                while(adjV != EMTY_QUE_SIG){
+                    nextV = peek_que(&adl->ques[adjV]);
+                    if(nextV == cur_u){
+                         // deque mutual list
+                        Va = deque(&adl->ques[cur_u]);
+                        Vb = deque(&adl->ques[adjV]);
+                        //record
+                        append_edge(&el, Va, Vb);
+                        //Clear path
+                        clear_Arr(&pathc);
+                        break;
+                    }
+                    else{
+                        append_dymArr(&pathc, cur_u);
+                        cur_u = nextV;
+                        adjV = peek_que(&adl->ques[cur_u]);
+
+                        el.valid = is_circle(pathc);
+                    }
+                    cur_u = nextV;
+                    adjV = peek_que(&adl->ques[u]);
+                    if(!el.valid)
+                            break;
+                }
+            }
+
+            if(!el.valid)
+                break;
         }
 
+        adjV = peek_que(&adl->ques[u]);
         if(!el.valid)
-            break;
+                break;
     }
 
    
