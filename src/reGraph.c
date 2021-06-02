@@ -24,6 +24,20 @@ void add_edge(adjlist* adl, int u, int v){
     enque(&adl->ques[u], v);
 }
 
+bool is_circle(dymArr arr){
+    if(arr.len<=1)
+        return false;
+    else{
+        int first = arr.i[0];
+        int last = arr.i[arr.len-1];
+
+        if(first==last)
+            return true;
+        else    
+            return false;
+    }
+}
+
 
 //validation
 edgeList init_edgeList(int size){
@@ -60,11 +74,12 @@ edgeList GraphReconstruct(adjlist* adl){
     edgeList el = init_edgeList(adl->n);
     int adjV = 0;
     int pairV = 0;
+    dymArr pathc = init_Arr(INIT_ADJ_LEN); // record path
     
     for(int u=1;u<=adl->n;u++){
-        adjV = deque(&adl->ques[u]);
+        adjV = peek_que(&adl->ques[u]);
         while(adjV!=EMTY_QUE_SIG){
-            pairV = deque(&adl->ques[adjV]);
+            nextV = deque(&adl->ques[adjV]);
             if (pairV != u)
                 el.valid = false;
             else{

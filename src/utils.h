@@ -35,6 +35,9 @@ typedef struct{
 dymArr init_Arr(int size);
 void kill_dymArr(dymArr*);
 
+//clear
+void clear_Arr(dymArr*);
+
 //append
 void append_dymArr(dymArr*, int val);
 int get_item(dymArr, int i);
@@ -51,6 +54,7 @@ void kill_que(que*);
 
 void enque(que*, int val);
 int deque(que*);
+int peek_que(que*);
 
 
 
