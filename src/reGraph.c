@@ -85,22 +85,23 @@ edgeList GraphReconstruct(adjlist* adl){
     return el;
 }
 
-void deque_adjList(adjlist* adl, edgeList* el, dymArr* pathc, int vtx){
+bool deque_adjList(adjlist* adl, edgeList* el, dymArr* pathc, int vtx){
     int adjV = peek_que(&adl->ques[vtx]);
 
     if (is_circle(*pathc)){//Circular
         el->valid=false;
-        return;
+        return false;
     }
     if (adjV == EMTY_QUE_SIG){ //Empty 
-        return;
+        return true;
     }
 
     int nextV = peek_que(&adl->ques[adjV]);
     if(adjV == nextV){
-        append_edge(el, adjV, nextV);
+        append_edge(el, vtx, adjV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[vtx]);
+        clear_Arr(pathc);
     }
     else{
         append_dymArr(pathc, vtx);
