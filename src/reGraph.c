@@ -74,74 +74,42 @@ void append_edge(edgeList* el, int u, int v){
 
 
 edgeList GraphReconstruct(adjlist* adl){
-
-    //TODO
-    edgeList el = init_edgeList(adl->n);
-    int cur_u;
-    int adjV = 0;
-    int nextV = 0;
-    int Va, Vb;
-    dymArr pathc = init_Arr(INIT_ADJ_LEN); // record path
+    edgeList el=init_edgeList(adl->n);
+    dymArr pathc = init_Arr(INIT_ADJ_LEN);
     
-    for(int u=1;u<=adl->n;u++){
-        cur_u = u;
-        adjV = peek_que(&adl->ques[cur_u]);
-        while(adjV!=EMTY_QUE_SIG){
-            nextV = peek_que(&adl->ques[adjV]);
-
-            //Check mutual link
-            if( nextV == cur_u  ){ //valid edge
-                // deque mutual list
-                Va = deque(&adl->ques[cur_u]);
-                Vb = deque(&adl->ques[adjV]);
-                //record
-                append_edge(&el, Va, Vb);
-
-                //Clear path
-                clear_Arr(&pathc);
-            }
-            else{//not valid edge
-                append_dymArr(&pathc, cur_u);
-                cur_u = nextV;
-                adjV = peek_que(&adl->ques[cur_u]);
-                while(adjV != EMTY_QUE_SIG){
-                    nextV = peek_que(&adl->ques[adjV]);
-                    if(nextV == cur_u){
-                         // deque mutual list
-                        Va = deque(&adl->ques[cur_u]);
-                        Vb = deque(&adl->ques[adjV]);
-                        //record
-                        append_edge(&el, Va, Vb);
-                        //Clear path
-                        clear_Arr(&pathc);
-                        break;
-                    }
-                    else{
-                        append_dymArr(&pathc, cur_u);
-                        cur_u = nextV;
-                        adjV = peek_que(&adl->ques[cur_u]);
-
-                        el.valid = is_circle(pathc);
-                    }
-                    cur_u = nextV;
-                    adjV = peek_que(&adl->ques[u]);
-                    if(!el.valid)
-                            break;
-                }
-            }
-
-            if(!el.valid)
-                break;
-        }
-
-        adjV = peek_que(&adl->ques[u]);
-        if(!el.valid)
-                break;
+    for(int v=1;v<=adl->n;v++){
+        deque_adjList(adl, &el, &pathc, v);
     }
 
-   
+    kill_dymArr(&pathc);
     return el;
 }
+
+void deque_adjList(adjlist* adl, edgeList* el, dymArr* pathc, int vtx){
+    int adjV = peek_que(&adl->ques[vtx]);
+
+    if (is_circle(*pathc)){//Circular
+        el->valid=false;
+        return;
+    }
+    if (adjV == EMTY_QUE_SIG){ //Empty 
+        return;
+    }
+
+    int nextV = peek_que(&adl->ques[adjV]);
+    if(adjV == nextV){
+        append_edge(el, adjV, nextV);
+        deque(&adl->ques[adjV]);
+        deque(&adl->ques[vtx]);
+    }
+    else{
+        append_dymArr(pathc, vtx);
+    }
+
+    deque_adjList(adl, el, pathc, adjV);
+}
+
+
 
 int interface(void){
     int N;//Number of nodes
