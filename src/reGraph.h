@@ -65,7 +65,7 @@ void clear_path(path*);
 /**
  * @brief Check circular reference. 
  */
-bool is_circle(path);
+bool is_circle(path, int val);
 
 //Edge list
 typedef struct {
@@ -80,7 +80,7 @@ void print_edgeList(edgeList);
 void append_edge(edgeList*, int u, int v);
 
 edgeList GraphReconstruct(adjlist*);
-bool deque_adjList(adjlist*, edgeList*, dymArr* pathc, int vtx);
+bool deque_adjList(adjlist*, edgeList*, path* pathc, int vtx);
 
 int interface(void);
 
