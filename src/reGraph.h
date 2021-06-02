@@ -46,15 +46,28 @@ void kill_adjlist(adjlist*);
  */
 void add_edge(adjlist*, int u, int v);
 
-/**
- * @brief Check circular reference. Compare i[0] and i[end]
- * 
- * @return true when i[0]==i[end] and len>1
- * @return false otherwise
- */
-bool is_circle(dymArr);
 
 //Validation
+
+//path
+typedef struct {
+    int* vs;
+    dymArr visited_v;
+    int len;
+    int num_v;
+} path;
+
+path init_path(int size);
+void kill_path(path*);
+void append_path(path*, int u);
+void clear_path(path*);
+
+/**
+ * @brief Check circular reference. 
+ */
+bool is_circle(path);
+
+//Edge list
 typedef struct {
     dymArr u;
     dymArr v;
