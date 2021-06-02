@@ -76,9 +76,19 @@ void append_edge(edgeList* el, int u, int v){
 edgeList GraphReconstruct(adjlist* adl){
     edgeList el=init_edgeList(adl->n);
     dymArr pathc = init_Arr(INIT_ADJ_LEN);
-    
+    bool res;
+    int cur;
+
+    //Pop all the ques to empty
     for(int v=1;v<=adl->n;v++){
-        deque_adjList(adl, &el, &pathc, v);
+        res = deque_adjList(adl, &el, &pathc, v);
+        cur = peek_que(&adl->ques[v]);
+        while(res && cur!=EMTY_QUE_SIG){
+            res = deque_adjList(adl, &el, &pathc, v);
+            cur = peek_que(&adl->ques[v]);
+        }
+        if (!res)
+            break;
     }
 
     kill_dymArr(&pathc);
