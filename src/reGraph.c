@@ -146,11 +146,11 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         clear_path(pathc);
     }
     else{
-        append_path(pathc, vtx);
         if (is_circle(*pathc, vtx)){//Circular
             el->valid=false;
             return false;
         }
+        append_path(pathc, vtx);
     }
 
     deque_adjList(adl, el, pathc, adjV);
