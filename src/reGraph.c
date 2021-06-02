@@ -26,11 +26,47 @@ void add_edge(adjlist* adl, int u, int v){
 
 //Path
 
-path init_path(int size);
-void kill_path(path*);
-void append_path(path*, int u);
-void clear_path(path*);
-bool is_circle(path, int val);
+path init_path(int size){
+    path p;
+    p.vs = (int*)malloc((size+1)*sizeof(int));
+
+    //Initialize 
+    for(int i=0;i<=size;i++){
+        p.vs[i] = 0;
+    }
+
+    p.visited_v = init_Arr(size+1);
+    p.len = 0;
+    p.num_v = size;
+    return p;
+}
+
+void kill_path(path* p){
+    free(p->vs);
+    kill_dymArr(&p->visited_v);
+}
+
+void append_path(path* p, int u){
+    ++(p->vs[u]);
+    ++(p->len);
+    append_dymArr(&p->visited_v, u);
+}
+
+void clear_path(path* p){
+    int vst;
+    for(int i=0;i<p->visited_v.len;i++){
+        vst = get_item(p->visited_v, i);
+        p->vs[vst] = 0;
+    }
+    p->len = 0;
+}
+
+bool is_circle(path p, int val){
+    if (p.vs[val] > 0)
+        return true;
+    else 
+        return false;
+}
 
 //validation
 edgeList init_edgeList(int size){
@@ -107,7 +143,7 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
-        clear_Arr(pathc);
+        clear_path(pathc);
     }
     else{
         append_path(pathc, vtx);
