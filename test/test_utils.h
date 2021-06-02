@@ -38,6 +38,7 @@ void test_queue(void){
 
     for(int i=0;i<MAX_NODES;i++)
         TEST_CHECK(deque(&q) == i);
+    TEST_CHECK(deque(&q) == EMTY_QUE_SIG);
     TEST_CHECK(q.head-1 == q.tail);
     TEST_MSG("q.head: %d; q.tail %d", q.head, q.tail);
     TEST_CHECK(q.arr.len == MAX_NODES);
