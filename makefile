@@ -36,7 +36,7 @@ RUNTEST: MERGETEST
 	gcc -g3 -o $(testbuild)/test.out test_TEMP/*.c
 	./$(testbuild)/test.out 
 
-TEST: MERGETEST RUNTEST cleantest TESTD
+TEST: MERGETEST RUNTEST cleantest 
 
 RUN:
 	echo "$(green)Run $(mag) $(outfile)$(reset)"
