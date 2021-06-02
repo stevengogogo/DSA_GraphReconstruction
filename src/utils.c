@@ -26,6 +26,9 @@ void kill_dymArr(dymArr* arr){
     free(arr->i);
 };
 
+void clear_Arr(dymArr* arr){
+    arr->len = 0;
+}
 
 void append_dymArr(dymArr* arr, int val){
     //Augement size
@@ -73,4 +76,11 @@ int deque(que* q){
     int val = get_item(q->arr, q->head);
     ++(q->head);
     return val;
+}
+
+int peek_que(que* q){
+    if(q->head > q->tail || q->arr.len==0)
+        return EMTY_QUE_SIG;
+    else 
+        return q->arr.i[q->head];
 }

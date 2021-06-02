@@ -24,6 +24,20 @@ void add_edge(adjlist* adl, int u, int v){
     enque(&adl->ques[u], v);
 }
 
+bool is_circle(dymArr arr){
+    if(arr.len<4)
+        return false;
+    else{
+        int first = arr.i[0];
+        int last = arr.i[arr.len-1];
+
+        if(first==last)
+            return true;
+        else    
+            return false;
+    }
+}
+
 
 //validation
 edgeList init_edgeList(int size){
@@ -53,22 +67,72 @@ void print_edgeList(edgeList el){
     }
 };
 
+void append_edge(edgeList* el, int u, int v){
+    append_dymArr(&el->u,u);
+    append_dymArr(&el->v,v);
+}
+
 
 edgeList GraphReconstruct(adjlist* adl){
+    edgeList el=init_edgeList(adl->n);
+    dymArr pathc = init_Arr(INIT_ADJ_LEN);
+    bool res = true;
+    int cur;
 
-    //TODO
-    edgeList el = init_edgeList(3);
+    //Pop all the ques to empty
+    for(int v=1;v<=adl->n;v++){
+        res = deque_adjList(adl, &el, &pathc, v);
+        if (!res)
+            break;
 
-    el.valid =false;
+        cur = peek_que(&adl->ques[v]);
+        while(res && cur!=EMTY_QUE_SIG){
+            res = deque_adjList(adl, &el, &pathc, v);
+            cur = peek_que(&adl->ques[v]);
+        }
+    }
+
+    kill_dymArr(&pathc);
     return el;
-
-    //TODO
 }
+
+bool deque_adjList(adjlist* adl, edgeList* el, dymArr* pathc, int vtx){
+    int adjV = peek_que(&adl->ques[vtx]);
+
+    if (is_circle(*pathc)){//Circular
+        el->valid=false;
+        return false;
+    }
+    if (adjV == EMTY_QUE_SIG){ //Empty 
+        return true;
+    }
+
+    int nextV = peek_que(&adl->ques[adjV]);
+
+    if (nextV == EMTY_QUE_SIG){ //partner is absent
+        el->valid=false;
+        return false;
+    }
+
+    if(vtx == nextV){
+        append_edge(el, adjV, nextV);
+        deque(&adl->ques[adjV]);
+        deque(&adl->ques[nextV]);
+        clear_Arr(pathc);
+    }
+    else{
+        append_dymArr(pathc, vtx);
+    }
+
+    deque_adjList(adl, el, pathc, adjV);
+}
+
+
 
 int interface(void){
     int N;//Number of nodes
     int numV; // number of adjacent nodes
-    int V; // index of node
+    int Vi; // index of node
     
     //Set Problem
     scanf("%d", &N);
@@ -78,7 +142,8 @@ int interface(void){
     for(int u=1;u<=N;u++){
         scanf("%d", &numV);
         for(int v=1;v<=numV;v++){
-            add_edge(&adl, u, v);
+            scanf("%d", &Vi);
+            add_edge(&adl, u, Vi);
         }
     }
 

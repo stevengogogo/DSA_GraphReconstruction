@@ -16,6 +16,7 @@
 #include <stdbool.h>
 #include "utils.h"
 
+
 /**
  * @brief Adjacency list
  * @param lists lists of vertexes. Neighbor are stored at list[0,..n] 
@@ -45,6 +46,14 @@ void kill_adjlist(adjlist*);
  */
 void add_edge(adjlist*, int u, int v);
 
+/**
+ * @brief Check circular reference. Compare i[0] and i[end]
+ * 
+ * @return true when i[0]==i[end] and len>1
+ * @return false otherwise
+ */
+bool is_circle(dymArr);
+
 //Validation
 typedef struct {
     dymArr u;
@@ -55,8 +64,10 @@ typedef struct {
 edgeList init_edgeList(int size);
 void kill_edgeList(edgeList*);
 void print_edgeList(edgeList);
+void append_edge(edgeList*, int u, int v);
 
 edgeList GraphReconstruct(adjlist*);
+bool deque_adjList(adjlist*, edgeList*, dymArr* pathc, int vtx);
 
 int interface(void);
 
