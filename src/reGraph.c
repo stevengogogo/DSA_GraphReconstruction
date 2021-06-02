@@ -104,7 +104,7 @@ void append_edge(edgeList* el, int u, int v){
 
 edgeList GraphReconstruct(adjlist* adl){
     edgeList el=init_edgeList(adl->n);
-    path pathc = init_path(INIT_ADJ_LEN);
+    path pathc = init_path(adl->n);
     bool res = true;
     int cur;
 
