@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['init_5fadjlist_19',['init_adjlist',['../reGraph_8h.html#a4dcb7b8db53dad6de835618918a3d9c9',1,'reGraph.c']]],
-  ['is_5fcircle_20',['is_circle',['../reGraph_8h.html#aa431d6c43d73ce42ca6796a12e180e28',1,'reGraph.c']]]
+  ['init_5fadjlist_21',['init_adjlist',['../reGraph_8h.html#a4dcb7b8db53dad6de835618918a3d9c9',1,'reGraph.c']]],
+  ['is_5fcircle_22',['is_circle',['../reGraph_8h.html#a5761b749ff9cdcfc727380c50c2f5386',1,'reGraph.c']]]
 ];

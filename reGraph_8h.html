@@ -107,6 +107,8 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structadjlist.html">adjlist</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adjacency list.  <a href="structadjlist.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structpath.html">path</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structedgeList.html">edgeList</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -127,9 +129,22 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>kill_adjlist</b> (<a 
 <tr class="memitem:a6fc092bd8a5734c02871a57d18d5a0d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="reGraph_8h.html#a6fc092bd8a5734c02871a57d18d5a0d0">add_edge</a> (<a class="el" href="structadjlist.html">adjlist</a> *, int u, int v)</td></tr>
 <tr class="memdesc:a6fc092bd8a5734c02871a57d18d5a0d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Add edge to link v to u.  <a href="reGraph_8h.html#a6fc092bd8a5734c02871a57d18d5a0d0">More...</a><br /></td></tr>
 <tr class="separator:a6fc092bd8a5734c02871a57d18d5a0d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa431d6c43d73ce42ca6796a12e180e28"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="reGraph_8h.html#aa431d6c43d73ce42ca6796a12e180e28">is_circle</a> (<a class="el" href="structdymArr.html">dymArr</a>)</td></tr>
-<tr class="memdesc:aa431d6c43d73ce42ca6796a12e180e28"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check circular reference. Compare i[0] and i[end].  <a href="reGraph_8h.html#aa431d6c43d73ce42ca6796a12e180e28">More...</a><br /></td></tr>
-<tr class="separator:aa431d6c43d73ce42ca6796a12e180e28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e03fac916e7ded0017a84c660b05036"><td class="memItemLeft" align="right" valign="top"><a id="a7e03fac916e7ded0017a84c660b05036"></a>
+<a class="el" href="structpath.html">path</a>&#160;</td><td class="memItemRight" valign="bottom"><b>init_path</b> (int size)</td></tr>
+<tr class="separator:a7e03fac916e7ded0017a84c660b05036"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62ed5392e4b9998ea999148bdfcd61c4"><td class="memItemLeft" align="right" valign="top"><a id="a62ed5392e4b9998ea999148bdfcd61c4"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>kill_path</b> (<a class="el" href="structpath.html">path</a> *)</td></tr>
+<tr class="separator:a62ed5392e4b9998ea999148bdfcd61c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b0d8f582a24e936627209a8e7b5384"><td class="memItemLeft" align="right" valign="top"><a id="ab7b0d8f582a24e936627209a8e7b5384"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>append_path</b> (<a class="el" href="structpath.html">path</a> *, int u)</td></tr>
+<tr class="separator:ab7b0d8f582a24e936627209a8e7b5384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0b581a676893895329b606458eb1a7c"><td class="memItemLeft" align="right" valign="top"><a id="af0b581a676893895329b606458eb1a7c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>clear_path</b> (<a class="el" href="structpath.html">path</a> *)</td></tr>
+<tr class="separator:af0b581a676893895329b606458eb1a7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5761b749ff9cdcfc727380c50c2f5386"><td class="memItemLeft" align="right" valign="top"><a id="a5761b749ff9cdcfc727380c50c2f5386"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="reGraph_8h.html#a5761b749ff9cdcfc727380c50c2f5386">is_circle</a> (<a class="el" href="structpath.html">path</a>, int val)</td></tr>
+<tr class="memdesc:a5761b749ff9cdcfc727380c50c2f5386"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check circular reference. <br /></td></tr>
+<tr class="separator:a5761b749ff9cdcfc727380c50c2f5386"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab1f135c4cf28fd46091e072d9ac9f0fa"><td class="memItemLeft" align="right" valign="top"><a id="ab1f135c4cf28fd46091e072d9ac9f0fa"></a>
 <a class="el" href="structedgeList.html">edgeList</a>&#160;</td><td class="memItemRight" valign="bottom"><b>init_edgeList</b> (int size)</td></tr>
 <tr class="separator:ab1f135c4cf28fd46091e072d9ac9f0fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -145,9 +160,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>append_edge</b> (<a c
 <tr class="memitem:a369f3257361148d671393397ba8ba7fb"><td class="memItemLeft" align="right" valign="top"><a id="a369f3257361148d671393397ba8ba7fb"></a>
 <a class="el" href="structedgeList.html">edgeList</a>&#160;</td><td class="memItemRight" valign="bottom"><b>GraphReconstruct</b> (<a class="el" href="structadjlist.html">adjlist</a> *)</td></tr>
 <tr class="separator:a369f3257361148d671393397ba8ba7fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03ff0e1ef1e857514c0224ce8a598766"><td class="memItemLeft" align="right" valign="top"><a id="a03ff0e1ef1e857514c0224ce8a598766"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>deque_adjList</b> (<a class="el" href="structadjlist.html">adjlist</a> *, <a class="el" href="structedgeList.html">edgeList</a> *, <a class="el" href="structdymArr.html">dymArr</a> *pathc, int vtx)</td></tr>
-<tr class="separator:a03ff0e1ef1e857514c0224ce8a598766"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9962f3cce9ed3aa4c2b3240d7211e92c"><td class="memItemLeft" align="right" valign="top"><a id="a9962f3cce9ed3aa4c2b3240d7211e92c"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>deque_adjList</b> (<a class="el" href="structadjlist.html">adjlist</a> *, <a class="el" href="structedgeList.html">edgeList</a> *, <a class="el" href="structpath.html">path</a> *pathc, int vtx)</td></tr>
+<tr class="separator:a9962f3cce9ed3aa4c2b3240d7211e92c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a291f23de83e1b78e47b0d87a464bed04"><td class="memItemLeft" align="right" valign="top"><a id="a291f23de83e1b78e47b0d87a464bed04"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> (void)</td></tr>
 <tr class="separator:a291f23de83e1b78e47b0d87a464bed04"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -225,29 +240,6 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>interface</b> (void)</
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>adjlist </dd></dl>
-
-</div>
-</div>
-<a id="aa431d6c43d73ce42ca6796a12e180e28"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa431d6c43d73ce42ca6796a12e180e28">&#9670;&nbsp;</a></span>is_circle()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool is_circle </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structdymArr.html">dymArr</a>&#160;</td>
-          <td class="paramname"><em>arr</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Check circular reference. Compare i[0] and i[end]. </p>
-<dl class="section return"><dt>Returns</dt><dd>true when i[0]==i[end] and len&gt;1 </dd>
-<dd>
-false otherwise </dd></dl>
 
 </div>
 </div>
