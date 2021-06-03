@@ -106,23 +106,14 @@ edgeList GraphReconstruct(adjlist* adl){
     edgeList el=init_edgeList(adl->n + 1);
     path pathc = init_path(adl->n + 1);
     bool res = true;
-    int cur;
-    int num_negh;
    
     //Pop all the ques to empty
-    for(int v=1;v<=adl->n;v++){
-        num_negh = adl->ques[v].arr.len;
-        for(int j=1;j<=2*num_negh;j++){
-            res = deque_adjList(adl, &el, &pathc, v);
-            cur = peek_que(&adl->ques[v]);
+    deque_adjList(adl, &el, &pathc, 1);
 
-            if(!res || cur == EMTY_QUE_SIG){
-                break;
-            }
-        }
-
-        if(cur != EMTY_QUE_SIG){
-            el.valid=false;
+    //Check every thing is popped out
+    for(int i=1; i<adl->n;i++){
+        if( peek_que(&adl->ques[i]) !=  EMTY_QUE_SIG){
+            el.valid = false;
             break;
         }
     }
@@ -160,7 +151,6 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         append_path(pathc, vtx);
         deque_adjList(adl, el, pathc, adjV);
     }
-
 }
 
 
