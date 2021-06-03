@@ -24,8 +24,8 @@ void add_edge(adjlist* adl, int u, int v){
     enque(&adl->ques[u], v);
 }
 
-//Path
 
+/**Path**/
 path init_path(int size){
     path p;
     p.vs = (int*)malloc((size+1)*sizeof(int));
@@ -68,7 +68,7 @@ bool is_circle(path p, int val){
         return false;
 }
 
-//validation
+/**validation**/
 edgeList init_edgeList(int size){
     edgeList el;
     el.u = init_Arr(size);
@@ -107,17 +107,23 @@ edgeList GraphReconstruct(adjlist* adl){
     path pathc = init_path(adl->n + 1);
     bool res = true;
     int cur;
-
+    int num_negh;
+   
     //Pop all the ques to empty
     for(int v=1;v<=adl->n;v++){
-        res = deque_adjList(adl, &el, &pathc, v);
-        if (!res)
-            break;
-
-        cur = peek_que(&adl->ques[v]);
-        while(res && cur!=EMTY_QUE_SIG){
+        num_negh = adl->ques[v].arr.len;
+        for(int j=1;j<=2*num_negh;j++){
             res = deque_adjList(adl, &el, &pathc, v);
             cur = peek_que(&adl->ques[v]);
+
+            if(!res || cur == EMTY_QUE_SIG){
+                break;
+            }
+        }
+
+        if(cur != EMTY_QUE_SIG){
+            el.valid=false;
+            break;
         }
     }
 
@@ -144,6 +150,7 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
         clear_path(pathc);
+        deque_adjList(adl, el, pathc, vtx);
     }
     else{
         if (is_circle(*pathc, vtx)){//Circular
@@ -151,9 +158,9 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
             return false;
         }
         append_path(pathc, vtx);
+        deque_adjList(adl, el, pathc, adjV);
     }
 
-    deque_adjList(adl, el, pathc, adjV);
 }
 
 
