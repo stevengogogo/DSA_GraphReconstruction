@@ -52,13 +52,13 @@ void append_path(path* p, int u){
     append_dymArr(&p->visited_v, u);
 }
 
-void clear_path(path* p){
-    int vst;
-    for(int i=0;i<p->visited_v.len;i++){
-        vst = get_item(p->visited_v, i);
-        p->vs[vst] = 0;
-    }
-    p->len = 0;
+int pop_path(path* p){
+    if(p->len==0)
+        return EMTY_QUE_SIG;
+    int val = p->vs[p->len-1];
+    p->visited_v.i[val] = 0;
+    --(p->len);
+    return val;
 }
 
 bool is_circle(path p, int val){
@@ -111,8 +111,8 @@ edgeList GraphReconstruct(adjlist* adl){
     deque_adjList(adl, &el, &pathc, 1);
 
     //Check every thing is popped out
-    for(int i=1; i<adl->n;i++){
-        if( peek_que(&adl->ques[i]) !=  EMTY_QUE_SIG){
+    for(int i=1;i<adl->n;i++){
+        if(peek_que(&adl->ques[i]) != EMTY_QUE_SIG){
             el.valid = false;
             break;
         }
@@ -140,7 +140,6 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
-        clear_path(pathc);
         deque_adjList(adl, el, pathc, vtx);
     }
     else{
@@ -150,7 +149,11 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         }
         append_path(pathc, vtx);
         deque_adjList(adl, el, pathc, adjV);
-    }
+    } 
+
+    int savedV = pop_path(pathc);
+    if (savedV!=EMTY_QUE_SIG)
+        deque_adjList(adl,el,pathc, savedV);
 }
 
 
