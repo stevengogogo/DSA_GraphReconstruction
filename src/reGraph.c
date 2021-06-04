@@ -47,10 +47,10 @@ void kill_path(path* p){
 }
 
 void append_path(path* p, int u){
-    ++(p->vs[u]);
     if(p->vs[u] == 0){
         append_dymArr(&p->visited_v, u);
     }
+    ++(p->vs[u]);
     ++(p->len);
 }
 
