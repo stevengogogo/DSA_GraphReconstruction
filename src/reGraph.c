@@ -48,15 +48,17 @@ void kill_path(path* p){
 
 void append_path(path* p, int u){
     ++(p->vs[u]);
-    append_dymArr(&p->visited_v, u);
-    p->len = p->visited_v.len;
+    if(p->vs[u] != 0){
+        append_dymArr(&p->visited_v, u);
+    }
+    ++(p->len);
 }
 
 int pop_path(path* p){
     int v = pop_item(&p->visited_v);
     if(v==EMTY_QUE_SIG)
         return v;
-    p->len = p->visited_v.len;
+    --(p->len);
     p->vs[v] = 0;
     return v;
 }
