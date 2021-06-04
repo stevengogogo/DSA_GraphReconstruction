@@ -61,6 +61,15 @@ int pop_path(path* p){
     return v;
 }
 
+void clear_path(path* p){
+    int Vi = pop_item(&p->visited_v);
+    while(Vi!=EMTY_QUE_SIG){
+        p->vs[Vi] = 0;
+        Vi = pop_item(&p->visited_v);
+    }
+    
+}
+
 
 
 bool is_circle(path p, int val){
@@ -139,8 +148,7 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx)
         append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
-        deque_adjList(adl, el, pathc, pathl, adjV);
-        deque_adjList(adl, el, pathc, pathl, vtx);
+        //clear_path(pathc);
     }
     else{
         if (is_circle(*pathc, vtx)){//Circular
@@ -148,13 +156,14 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx)
             return false;
         }
         append_path(pathc, vtx);
-        deque_adjList(adl, el, pathc, pathl, adjV);
     } 
     
+    deque_adjList(adl, el, pathc, pathl, adjV);
+    deque_adjList(adl, el, pathc, pathl, vtx);
 
-    int savedV = pop_path(pathc);
-    if (savedV!=EMTY_QUE_SIG && el->valid)
-        deque_adjList(adl,el,pathc, pathl, savedV);
+    //int savedV = pop_path(pathc);
+    //if (savedV!=EMTY_QUE_SIG && el->valid)
+        //deque_adjList(adl,el,pathc, pathl, savedV);
 }
 
 

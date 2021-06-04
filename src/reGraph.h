@@ -61,6 +61,7 @@ path init_path(int size);
 void kill_path(path*);
 void append_path(path*, int u);
 int pop_path(path*);
+void clear_path(path*);
 
 /**
  * @brief Check circular reference. 
