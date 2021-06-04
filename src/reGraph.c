@@ -48,7 +48,7 @@ void kill_path(path* p){
 
 void append_path(path* p, int u){
     ++(p->vs[u]);
-    if(p->vs[u] != 0){
+    if(p->vs[u] == 0){
         append_dymArr(&p->visited_v, u);
     }
     ++(p->len);
@@ -122,7 +122,9 @@ edgeList GraphReconstruct(adjlist* adl){
     bool res = true;
    
     //Pop all the ques to empty
-    deque_adjList(adl, &el, &pathc,1);
+    for(int i=1;i<=adl->n;i++){
+        deque_adjList(adl, &el, &pathc,i);
+    }
 
     int saveV = pop_path(&pathc);
     int saveV2 = saveV;
