@@ -120,8 +120,20 @@ edgeList GraphReconstruct(adjlist* adl){
     bool res = true;
    
     //Pop all the ques to empty
-    deque_adjList(adl, &el, &pathc, &pathl,1);
+    deque_adjList(adl, &el, &pathc,1);
 
+    int saveV = pop_path(&pathc);
+    int saveV2 = saveV;
+    while(saveV!=EMTY_QUE_SIG){
+        deque_adjList(adl, &el, &pathc, saveV);
+        saveV = pop_path(&pathc);
+        if(saveV2 == saveV && saveV!=EMTY_QUE_SIG){
+            el.valid=false;
+            break;
+        }
+        else
+            saveV2 = saveV;
+    }
 
 
     kill_path(&pathc);
@@ -129,7 +141,7 @@ edgeList GraphReconstruct(adjlist* adl){
     return el;
 }
 
-bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx){
+bool deque_adjList(adjlist* adl, edgeList* el, path* pathc,int vtx){
 
     int adjV = peek_que(&adl->ques[vtx]);
 
@@ -148,7 +160,8 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx)
         append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
-        //clear_path(pathc);
+        deque_adjList(adl, el, pathc, vtx);
+        deque_adjList(adl, el, pathc, adjV);
     }
     else{
         if (is_circle(*pathc, vtx)){//Circular
@@ -156,14 +169,9 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx)
             return false;
         }
         append_path(pathc, vtx);
+        deque_adjList(adl, el, pathc, adjV);
     } 
-    
-    deque_adjList(adl, el, pathc, pathl, adjV);
-    deque_adjList(adl, el, pathc, pathl, vtx);
 
-    //int savedV = pop_path(pathc);
-    //if (savedV!=EMTY_QUE_SIG && el->valid)
-        //deque_adjList(adl,el,pathc, pathl, savedV);
 }
 
 
