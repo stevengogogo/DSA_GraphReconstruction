@@ -53,8 +53,8 @@ void add_edge(adjlist*, int u, int v);
 typedef struct {
     int* vs;
     dymArr visited_v;
-    int len;
-    int num_v;
+    int len; //length of visited list
+    int num_v; //length of VS
 } path;
 
 path init_path(int size);

@@ -53,12 +53,10 @@ void append_path(path* p, int u){
 }
 
 int pop_path(path* p){
-    if(p->len==0)
-        return EMTY_QUE_SIG;
-    int val = p->vs[p->len-1];
-    p->visited_v.i[val] = 0;
-    --(p->len);
-    return val;
+    int v = pop_item(&p->visited_v);
+    p->len = p->visited_v.len;
+    p->vs[v] = 0;
+    return v;
 }
 
 bool is_circle(path p, int val){

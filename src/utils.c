@@ -46,6 +46,14 @@ int get_item(dymArr arr, int i){
     return arr.i[i];
 }
 
+int pop_item(dymArr* p){
+    if(p->len==0)
+        return EMTY_QUE_SIG;
+    int val = p->i[p->len-1];
+    --p->len;
+    return val;
+}
+
 
 // Queue
 

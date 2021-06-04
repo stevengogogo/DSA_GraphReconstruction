@@ -41,6 +41,7 @@ void clear_Arr(dymArr*);
 //append
 void append_dymArr(dymArr*, int val);
 int get_item(dymArr, int i);
+int pop_item(dymArr*);
 
 
 typedef struct{
