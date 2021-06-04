@@ -48,16 +48,20 @@ void kill_path(path* p){
 
 void append_path(path* p, int u){
     ++(p->vs[u]);
-    ++(p->len);
     append_dymArr(&p->visited_v, u);
+    p->len = p->visited_v.len;
 }
 
 int pop_path(path* p){
     int v = pop_item(&p->visited_v);
+    if(v==EMTY_QUE_SIG)
+        return v;
     p->len = p->visited_v.len;
     p->vs[v] = 0;
     return v;
 }
+
+
 
 bool is_circle(path p, int val){
     if (p.vs[val] > 0)
@@ -102,25 +106,22 @@ void append_edge(edgeList* el, int u, int v){
 
 edgeList GraphReconstruct(adjlist* adl){
     edgeList el=init_edgeList(adl->n + 1);
-    path pathc = init_path(adl->n + 1);
+    path pathc = init_path(adl->n + 1); //path can not solve not now
+    path pathl = init_path(adl->n + 1); //path in waiting list
     bool res = true;
    
     //Pop all the ques to empty
-    deque_adjList(adl, &el, &pathc, 1);
+    deque_adjList(adl, &el, &pathc, &pathl,1);
 
-    //Check every thing is popped out
-    for(int i=1;i<adl->n;i++){
-        if(peek_que(&adl->ques[i]) != EMTY_QUE_SIG){
-            el.valid = false;
-            break;
-        }
-    }
+
 
     kill_path(&pathc);
+    kill_path(&pathl);
     return el;
 }
 
-bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
+bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx){
+
     int adjV = peek_que(&adl->ques[vtx]);
 
     if (adjV == EMTY_QUE_SIG){ //Empty 
@@ -138,7 +139,8 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
         append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
-        deque_adjList(adl, el, pathc, vtx);
+        deque_adjList(adl, el, pathc, pathl, adjV);
+        deque_adjList(adl, el, pathc, pathl, vtx);
     }
     else{
         if (is_circle(*pathc, vtx)){//Circular
@@ -146,12 +148,13 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, int vtx){
             return false;
         }
         append_path(pathc, vtx);
-        deque_adjList(adl, el, pathc, adjV);
+        deque_adjList(adl, el, pathc, pathl, adjV);
     } 
+    
 
     int savedV = pop_path(pathc);
-    if (savedV!=EMTY_QUE_SIG)
-        deque_adjList(adl,el,pathc, savedV);
+    if (savedV!=EMTY_QUE_SIG && el->valid)
+        deque_adjList(adl,el,pathc, pathl, savedV);
 }
 
 
