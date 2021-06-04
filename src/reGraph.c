@@ -117,8 +117,8 @@ void append_edge(edgeList* el, int u, int v){
 
 edgeList GraphReconstruct(adjlist* adl){
     edgeList el=init_edgeList(adl->n + 1);
-    path pathc = init_path(adl->n + 1); //path can not solve not now
-    path pathl = init_path(adl->n + 1); //path in waiting list
+    path pathc = init_path(adl->n + 10); //path can not solve not now
+    path pathl = init_path(adl->n + 10); //path in waiting list
     bool res = true;
    
     //Pop all the ques to empty
