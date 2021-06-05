@@ -81,7 +81,7 @@ void print_edgeList(edgeList);
 void append_edge(edgeList*, int u, int v);
 
 edgeList GraphReconstruct(adjlist*);
-bool deque_adjList(adjlist*, edgeList*, path* pathc, int vtx);
+bool deque_adjList(adjlist*, edgeList*, path* pathc, path* pathl, int vtx);
 
 int interface(void);
 

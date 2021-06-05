@@ -69,13 +69,12 @@ void clear_path(path* p){
         p->vs[Vi] = 0;
         Vi = pop_item(&p->visited_v);
     }
-    
 }
 
 
 
 bool is_circle(path p, int val){
-    if (p.vs[val] > 0)
+    if (p.vs[val] > 1)
         return true;
     else 
         return false;
@@ -123,13 +122,13 @@ edgeList GraphReconstruct(adjlist* adl){
    
     //Pop all the ques to empty
     for(int i=1;i<=adl->n;i++){
-        deque_adjList(adl, &el, &pathc,i);
+        deque_adjList(adl, &el, &pathc, &pathl, i);
     }
 
     int saveV = pop_path(&pathc);
     int saveV2 = saveV;
     while(saveV!=EMTY_QUE_SIG){
-        deque_adjList(adl, &el, &pathc, saveV);
+        deque_adjList(adl, &el, &pathc, &pathl, saveV);
         saveV = pop_path(&pathc);
         if(saveV2 == saveV && saveV!=EMTY_QUE_SIG){
             el.valid=false;
@@ -145,7 +144,7 @@ edgeList GraphReconstruct(adjlist* adl){
     return el;
 }
 
-bool deque_adjList(adjlist* adl, edgeList* el, path* pathc,int vtx){
+bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx){
 
     int adjV = peek_que(&adl->ques[vtx]);
 
@@ -164,16 +163,18 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc,int vtx){
         append_edge(el, adjV, nextV);
         deque(&adl->ques[adjV]);
         deque(&adl->ques[nextV]);
-        deque_adjList(adl, el, pathc, vtx);
-        deque_adjList(adl, el, pathc, adjV);
+        clear_path(pathl);
+        deque_adjList(adl, el, pathc, pathl, vtx);
+        deque_adjList(adl, el, pathc, pathl, adjV);
     }
     else{
-        if (is_circle(*pathc, vtx)){//Circular
+        if (is_circle(*pathl, vtx)){//Circular
             el->valid=false;
             return false;
         }
+        append_path(pathl, vtx);
         append_path(pathc, vtx);
-        deque_adjList(adl, el, pathc, adjV);
+        deque_adjList(adl, el, pathc, pathl,adjV);
     } 
 
 }
