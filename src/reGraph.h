@@ -11,6 +11,7 @@
 #ifndef REGRAPH_H
 #define REGRAPH_H
 #define INIT_ADJ_LEN 1000
+#define MAXEDGE 210000
 #include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
@@ -66,7 +67,7 @@ void clear_path(path*);
 /**
  * @brief Check circular reference. 
  */
-bool is_circle(path, int val);
+bool is_circle(path*, int val);
 
 //Edge list
 typedef struct {

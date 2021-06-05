@@ -69,12 +69,13 @@ void clear_path(path* p){
         p->vs[Vi] = 0;
         Vi = pop_item(&p->visited_v);
     }
+    p->len = p->visited_v.len;
 }
 
 
 
-bool is_circle(path p, int val){
-    if (p.vs[val] > 1)
+bool is_circle(path* p, int val){
+    if (p->vs[val] > 1)
         return true;
     else 
         return false;
@@ -115,7 +116,7 @@ void append_edge(edgeList* el, int u, int v){
 
 
 edgeList GraphReconstruct(adjlist* adl){
-    edgeList el=init_edgeList(adl->n + 1);
+    edgeList el=init_edgeList(MAXEDGE);
     path pathc = init_path(adl->n + 10); //path can not solve not now
     path pathl = init_path(adl->n + 10); //path in waiting list
     bool res = true;
@@ -168,13 +169,13 @@ bool deque_adjList(adjlist* adl, edgeList* el, path* pathc, path* pathl,int vtx)
         deque_adjList(adl, el, pathc, pathl, adjV);
     }
     else{
-        if (is_circle(*pathl, vtx)){//Circular
+        if (is_circle(pathl, vtx)){//Circular
             el->valid=false;
             return false;
         }
         append_path(pathl, vtx);
         append_path(pathc, vtx);
-        deque_adjList(adl, el, pathc, pathl,adjV);
+        //deque_adjList(adl, el, pathc, pathl,adjV);
     } 
 
 }
@@ -189,7 +190,7 @@ int interface(void){
     //Set Problem
     scanf("%d", &N);
 
-    adjlist adl = init_adjlist(N);
+    adjlist adl = init_adjlist(N+100);
 
     for(int u=1;u<=N;u++){
         scanf("%d", &numV);
