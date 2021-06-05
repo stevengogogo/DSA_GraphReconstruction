@@ -98,44 +98,47 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="structpath.html">   53</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">int</span>* vs;</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="structdymArr.html">dymArr</a> visited_v;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> len;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> num_v;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">int</span> len; <span class="comment">//length of visited list</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">int</span> num_v; <span class="comment">//length of VS</span></div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;} <a class="code" href="structpath.html">path</a>;</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<a class="code" href="structpath.html">path</a> init_path(<span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<a class="code" href="structpath.html">path</a> <a class="code" href="reGraph_8h.html#a7e03fac916e7ded0017a84c660b05036">init_path</a>(<span class="keywordtype">int</span> size);</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="keywordtype">void</span> kill_path(<a class="code" href="structpath.html">path</a>*);</div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="keywordtype">void</span> append_path(<a class="code" href="structpath.html">path</a>*, <span class="keywordtype">int</span> u);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">void</span> clear_path(<a class="code" href="structpath.html">path</a>*);</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="reGraph_8h.html#a5761b749ff9cdcfc727380c50c2f5386">is_circle</a>(<a class="code" href="structpath.html">path</a>, <span class="keywordtype">int</span> val);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">//Edge list</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="structedgeList.html">   71</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="structdymArr.html">dymArr</a> u;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="structdymArr.html">dymArr</a> v;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">bool</span> valid;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;} <a class="code" href="structedgeList.html">edgeList</a>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<a class="code" href="structedgeList.html">edgeList</a> init_edgeList(<span class="keywordtype">int</span> size);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keywordtype">void</span> kill_edgeList(<a class="code" href="structedgeList.html">edgeList</a>*);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> print_edgeList(<a class="code" href="structedgeList.html">edgeList</a>);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> append_edge(<a class="code" href="structedgeList.html">edgeList</a>*, <span class="keywordtype">int</span> u, <span class="keywordtype">int</span> v);</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<a class="code" href="structedgeList.html">edgeList</a> GraphReconstruct(<a class="code" href="structadjlist.html">adjlist</a>*);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<span class="keywordtype">bool</span> deque_adjList(<a class="code" href="structadjlist.html">adjlist</a>*, <a class="code" href="structedgeList.html">edgeList</a>*, <a class="code" href="structpath.html">path</a>* pathc, <span class="keywordtype">int</span> vtx);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;<span class="keywordtype">int</span> interface(<span class="keywordtype">void</span>);</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="keywordtype">int</span> pop_path(<a class="code" href="structpath.html">path</a>*);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="keywordtype">void</span> clear_path(<a class="code" href="structpath.html">path</a>*);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="keywordtype">bool</span> <a class="code" href="reGraph_8h.html#a5761b749ff9cdcfc727380c50c2f5386">is_circle</a>(<a class="code" href="structpath.html">path</a>, <span class="keywordtype">int</span> val);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">//Edge list</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="structedgeList.html">   72</a></span>&#160;<span class="keyword">typedef</span> <span class="keyword">struct </span>{</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="structdymArr.html">dymArr</a> u;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="structdymArr.html">dymArr</a> v;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">bool</span> valid;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;} <a class="code" href="structedgeList.html">edgeList</a>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<a class="code" href="structedgeList.html">edgeList</a> <a class="code" href="reGraph_8h.html#ab1f135c4cf28fd46091e072d9ac9f0fa">init_edgeList</a>(<span class="keywordtype">int</span> size);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="keywordtype">void</span> kill_edgeList(<a class="code" href="structedgeList.html">edgeList</a>*);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="keywordtype">void</span> print_edgeList(<a class="code" href="structedgeList.html">edgeList</a>);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">void</span> append_edge(<a class="code" href="structedgeList.html">edgeList</a>*, <span class="keywordtype">int</span> u, <span class="keywordtype">int</span> v);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<a class="code" href="structedgeList.html">edgeList</a> GraphReconstruct(<a class="code" href="structadjlist.html">adjlist</a>*);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keywordtype">bool</span> deque_adjList(<a class="code" href="structadjlist.html">adjlist</a>*, <a class="code" href="structedgeList.html">edgeList</a>*, <a class="code" href="structpath.html">path</a>* pathc, <a class="code" href="structpath.html">path</a>* pathl, <span class="keywordtype">int</span> vtx);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="keywordtype">int</span> interface(<span class="keywordtype">void</span>);</div>
 <div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="preprocessor">#endif </span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">#endif </span></div>
 <div class="ttc" id="areGraph_8h_html_a4dcb7b8db53dad6de835618918a3d9c9"><div class="ttname"><a href="reGraph_8h.html#a4dcb7b8db53dad6de835618918a3d9c9">init_adjlist</a></div><div class="ttdeci">adjlist init_adjlist(int n)</div><div class="ttdoc">Create adjacency list with n vertexes.</div><div class="ttdef"><b>Definition:</b> reGraph.c:3</div></div>
-<div class="ttc" id="areGraph_8h_html_a5761b749ff9cdcfc727380c50c2f5386"><div class="ttname"><a href="reGraph_8h.html#a5761b749ff9cdcfc727380c50c2f5386">is_circle</a></div><div class="ttdeci">bool is_circle(path, int val)</div><div class="ttdoc">Check circular reference.</div><div class="ttdef"><b>Definition:</b> reGraph.c:64</div></div>
+<div class="ttc" id="areGraph_8h_html_a5761b749ff9cdcfc727380c50c2f5386"><div class="ttname"><a href="reGraph_8h.html#a5761b749ff9cdcfc727380c50c2f5386">is_circle</a></div><div class="ttdeci">bool is_circle(path, int val)</div><div class="ttdoc">Check circular reference.</div><div class="ttdef"><b>Definition:</b> reGraph.c:76</div></div>
 <div class="ttc" id="areGraph_8h_html_a6fc092bd8a5734c02871a57d18d5a0d0"><div class="ttname"><a href="reGraph_8h.html#a6fc092bd8a5734c02871a57d18d5a0d0">add_edge</a></div><div class="ttdeci">void add_edge(adjlist *, int u, int v)</div><div class="ttdoc">Add edge to link v to u.</div><div class="ttdef"><b>Definition:</b> reGraph.c:23</div></div>
+<div class="ttc" id="areGraph_8h_html_a7e03fac916e7ded0017a84c660b05036"><div class="ttname"><a href="reGraph_8h.html#a7e03fac916e7ded0017a84c660b05036">init_path</a></div><div class="ttdeci">path init_path(int size)</div><div class="ttdef"><b>Definition:</b> reGraph.c:29</div></div>
+<div class="ttc" id="areGraph_8h_html_ab1f135c4cf28fd46091e072d9ac9f0fa"><div class="ttname"><a href="reGraph_8h.html#ab1f135c4cf28fd46091e072d9ac9f0fa">init_edgeList</a></div><div class="ttdeci">edgeList init_edgeList(int size)</div><div class="ttdef"><b>Definition:</b> reGraph.c:84</div></div>
 <div class="ttc" id="astructadjlist_html"><div class="ttname"><a href="structadjlist.html">adjlist</a></div><div class="ttdoc">Adjacency list.</div><div class="ttdef"><b>Definition:</b> reGraph.h:25</div></div>
 <div class="ttc" id="astructdymArr_html"><div class="ttname"><a href="structdymArr.html">dymArr</a></div><div class="ttdef"><b>Definition:</b> utils.h:28</div></div>
-<div class="ttc" id="astructedgeList_html"><div class="ttname"><a href="structedgeList.html">edgeList</a></div><div class="ttdef"><b>Definition:</b> reGraph.h:71</div></div>
+<div class="ttc" id="astructedgeList_html"><div class="ttname"><a href="structedgeList.html">edgeList</a></div><div class="ttdef"><b>Definition:</b> reGraph.h:72</div></div>
 <div class="ttc" id="astructpath_html"><div class="ttname"><a href="structpath.html">path</a></div><div class="ttdef"><b>Definition:</b> reGraph.h:53</div></div>
-<div class="ttc" id="astructque_html"><div class="ttname"><a href="structque.html">que</a></div><div class="ttdef"><b>Definition:</b> utils.h:46</div></div>
+<div class="ttc" id="astructque_html"><div class="ttname"><a href="structque.html">que</a></div><div class="ttdef"><b>Definition:</b> utils.h:47</div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">General Utilities for C language.</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
