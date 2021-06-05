@@ -53,13 +53,14 @@ void add_edge(adjlist*, int u, int v);
 typedef struct {
     int* vs;
     dymArr visited_v;
-    int len;
-    int num_v;
+    int len; //length of visited list
+    int num_v; //length of VS
 } path;
 
 path init_path(int size);
 void kill_path(path*);
 void append_path(path*, int u);
+int pop_path(path*);
 void clear_path(path*);
 
 /**
@@ -80,7 +81,7 @@ void print_edgeList(edgeList);
 void append_edge(edgeList*, int u, int v);
 
 edgeList GraphReconstruct(adjlist*);
-bool deque_adjList(adjlist*, edgeList*, path* pathc, int vtx);
+bool deque_adjList(adjlist*, edgeList*, path* pathc, path* pathl, int vtx);
 
 int interface(void);
 

@@ -46,6 +46,14 @@ int get_item(dymArr arr, int i){
     return arr.i[i];
 }
 
+int pop_item(dymArr* p){
+    if(p->len==0)
+        return EMTY_QUE_SIG;
+    int val = p->i[p->len-1];
+    --p->len;
+    return val;
+}
+
 
 // Queue
 
@@ -70,9 +78,10 @@ void enque(que* q, int val){
 }
 
 int deque(que* q){
-    if(q->head > q->tail){
+    if(q->head > q->tail || q->head==-1){
         return EMTY_QUE_SIG;
     }
+
     int val = get_item(q->arr, q->head);
     ++(q->head);
     return val;

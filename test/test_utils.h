@@ -4,7 +4,7 @@
 #include "acutest.h"
 #include "utils.h"
 
-#define MAX_NODES 100000
+#define MAX_NODES 1000000
 
 void test_utils(void)
 {
