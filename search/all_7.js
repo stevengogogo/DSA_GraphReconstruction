@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['regraph_2eh_12',['reGraph.h',['../reGraph_8h.html',1,'']]]
+  ['how_20to_20use_20this_20c_20template_0',['How to use this C template',['../index.html#autotoc_md4',1,'']]]
 ];
